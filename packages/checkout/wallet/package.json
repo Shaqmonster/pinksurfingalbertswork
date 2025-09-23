@@ -1,0 +1,51 @@
+{
+    "name": "@loginid/checkout-wallet",
+    "version": "1.2.3",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      }
+    },
+    "files": [
+      "dist",
+      "README.md",
+      "LICENSE.md"
+    ],
+    "private": false,
+    "publishConfig": {
+      "access": "public"
+    },
+    "scripts": {
+      "build": "tsc --noEmit && tsup && node ./post-def-typing.cjs",
+      "release": "semantic-release",
+      "delete-maps": "npm run delete-map-files && npm run delete-references-to-map-files",
+      "delete-map-files": "find ./dist -name '*.map' -delete",
+      "delete-references-to-map-files": "find ./dist -name '*.js' -or -name '*.mjs' -exec sed -i -e 's/sourceMappingURL=[^ ]*.map//g' {} +",
+      "lint": "eslint \"src/**/*.ts?(x)\"",
+      "test": "jest",
+      "docs": "typedoc"
+    },
+    "author": "LoginID Inc.",
+    "license": "ISC",
+    "keywords": [
+      "authentication",
+      "passkey",
+      "fido2",
+      "biometrics",
+      "webauthn",
+      "passwordless",
+      "checkout",
+      "payments",
+      "wallet"
+    ],
+    "devDependencies": {
+      "@loginid/core": "*",
+      "@loginid/checkout-commons": "*"
+    }
+  }
+  

@@ -1,0 +1,73 @@
+{
+    "name": "@loginid/core",
+    "private": true,
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "exports": {
+      "./api": {
+        "import": "./dist/api/index.js",
+        "types": "./dist/api/index.d.ts"
+      },
+      "./controllers": {
+        "import": "./dist/controllers/index.js",
+        "types": "./dist/controllers/index.d.ts"
+      },
+      "./client-events": {
+        "import": "./dist/client-events/index.js",
+        "types": "./dist/client-events/index.d.ts"
+      },
+      "./utils/browser": {
+        "import": "./dist/utils/browser/index.js",
+        "types": "./dist/utils/browser/index.d.ts"
+      },
+      "./utils/crypto": {
+        "import": "./dist/utils/crypto/index.js",
+        "types": "./dist/utils/crypto/index.d.ts"
+      },
+      "./errors": {
+        "import": "./dist/errors/index.js",
+        "types": "./dist/errors/index.d.ts"
+      },
+      "./helpers": {
+        "import": "./dist/helpers/index.js",
+        "types": "./dist/helpers/index.d.ts"
+      },
+      "./mfa": {
+        "import": "./dist/mfa/index.js",
+        "types": "./dist/mfa/index.d.ts"
+      },
+      "./session": {
+        "import": "./dist/session/index.js",
+        "types": "./dist/session/index.d.ts"
+      },
+      "./store": {
+        "import": "./dist/store/index.js",
+        "types": "./dist/store/index.d.ts"
+      },
+      "./validators": {
+        "import": "./dist/validators/index.js",
+        "types": "./dist/validators/index.d.ts"
+      },
+      "./webauthn": {
+        "import": "./dist/webauthn/index.js",
+        "types": "./dist//webauthn/index.d.ts"
+      }
+    },
+    "version": "0.0.1",
+    "description": "A private package that will share code across multiple SDKs",
+    "scripts": {
+      "build": "tsc --noEmit & tsup ./src/**/index.ts ./src/utils/crypto/index.ts ./src/utils/browser/index.ts --no-config --sourcemap --format esm,cjs --dts --minify",
+      "lint": "eslint \"src/**/*.ts?(x)\"",
+      "gen": "openapi --input ./openapi.yaml --output ./src/api --name LoginIDService --useOptions --useUnionTypes",
+      "delete-maps": "npm run delete-map-files && npm run delete-references-to-map-files",
+      "delete-map-files": "find ./dist -name '*.map' -delete",
+      "delete-references-to-map-files": "find ./dist -name '*.js' -or -name '*.mjs' -exec sed -i -e 's/sourceMappingURL=[^ ]*.map//g' {} +",
+      "test": "jest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  

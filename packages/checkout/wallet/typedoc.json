@@ -1,0 +1,13 @@
+{
+    "entryPoints": [
+      "./src/wallet/wallet.ts",
+    ],
+    "plugin": [
+      "typedoc-plugin-rename-defaults",
+      "typedoc-plugin-missing-exports"
+    ],
+    "out": "docs",
+    "internalModule": "Internal Modules",
+    "exclude": ["./src/api"]
+  }
+  

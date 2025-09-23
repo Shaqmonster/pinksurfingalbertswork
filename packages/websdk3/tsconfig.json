@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "module": "ESNext",
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      // If there are issues with tests, its because of this
+      "types": ["node"],
+  
+      /* Bundler mode */
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "react-jsx",
+  
+      /* Linting */
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+  
+      "baseUrl": "./",
+      "paths": {
+        "@/*": [
+          "*"
+        ]
+      }
+    },
+    "include": [
+      "src/**/*.ts",
+    ],
+  }
+  
